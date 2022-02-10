@@ -1,0 +1,83 @@
+# Build output
+/build
+/classes
+/out
+/bin
+/tmp
+/**/build
+/**/classes
+/**/out
+/**/bin
+/**/tmp
+**/gen-java
+**/gen-src
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# Gradle
+.gradle
+
+# IntelliJ
+.idea
+*.iml
+*.iws
+*.ipr
+*.ids
+
+# VSCode
+.vscode
+
+# Eclipse
+*.pydevproject
+.project
+.metadata
+*~.nib
+.classpath
+.settings
+.loadpath
+.externalToolBuilders
+*.launch
+.cproject
+.buildpath
+
+# ASDF
+.tool-versions
+
+# Miscellaneous
+*.orig
+*.rej
+*.tmp
+*.bak
+*.swp
+*~
+
+## OS 관련 ##
+
+# macOS folder metadata
+.DS_Store
+
+# Windows thumbnail cache files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
