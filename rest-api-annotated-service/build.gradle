@@ -1,0 +1,63 @@
+plugins {
+    id 'application'
+    id "io.spring.dependency-management" version "1.0.11.RELEASE"
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+repositories {
+    mavenCentral()
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'io.micrometer:micrometer-bom:1.8.2'
+        mavenBom 'io.netty:netty-bom:4.1.73.Final'
+        mavenBom 'com.linecorp.armeria:armeria-bom:1.14.0'
+        mavenBom 'org.junit:junit-bom:5.8.2'
+    }
+}
+
+dependencies {
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.assertj:assertj-core:3.22.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params'
+    testRuntimeOnly 'org.junit.platform:junit-platform-commons'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine'
+}
+
+dependencies {
+    implementation "com.linecorp.armeria:armeria:1.14.0"
+    runtimeOnly 'org.slf4j:slf4j-simple:1.7.34'
+
+    testImplementation 'com.linecorp.armeria:armeria-junit5'
+    testImplementation 'net.javacrumbs.json-unit:json-unit-fluent:2.28.0'
+    testImplementation 'org.assertj:assertj-core:3.22.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api'
+
+    // Logging
+//    runtimeOnly 'ch.qos.logback:logback-classic:1.2.10'
+//    runtimeOnly 'org.slf4j:log4j-over-slf4j:1.7.34'
+}
+
+application {
+    mainClass.set('example.armeria.server.blog.Main')
+}
+
+tasks.withType(JavaCompile) {
+    sourceCompatibility = '11'
+    targetCompatibility = '11'
+    options.encoding = 'UTF-8'
+    options.debug = true
+    options.compilerArgs += '-parameters'
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+}
